@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Main {
     public static void main(String[] args) {
-        int[] a = new int[]{49, 38, 35, 76, 13, 49, 34, 12, 64, 1};
+        int[] a = {49, 38, 35, 76, 13, 49, 34, 12, 64, 1};
         int[] b = new int[80000000];
         for (int i = 0; i < b.length; i++) {
             b[i] = (int) (Math.random() * 10000000);

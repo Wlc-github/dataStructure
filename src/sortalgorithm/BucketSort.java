@@ -7,7 +7,7 @@ import java.util.Arrays;
  */
 public class BucketSort {
     public static void main(String[] args) {
-        int[] a = new int[]{1, 3, 4, 5, 2, 6, 7, 7, 8, 9};
+        int[] a = {1, 3, 4, 5, 2, 6, 7, 7, 8, 9};
 //        CountSort(a);
         radixSort(a);
         System.out.println(Arrays.toString(a));
