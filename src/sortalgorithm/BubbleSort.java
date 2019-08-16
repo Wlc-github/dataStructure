@@ -21,9 +21,9 @@ public class BubbleSort {
             for (j = 0; j < a.length - 1 - i; j++) {
                 if (a[j] > a[j + 1]) {
                     flag = true;
-                    temp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = temp;
+                    a[j] = a[j] ^ a[j + 1];
+                    a[j + 1] = a[j] ^ a[j + 1];
+                    a[j] = a[j] ^ a[j + 1];
                 }
             }
             if (!flag)
@@ -40,9 +40,9 @@ public class BubbleSort {
             for (j = a.length - 2; j >= i; j--) {
                 if (a[j] > a[j + 1]) {
                     flag = true;
-                    temp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = temp;
+                    a[j] = a[j] ^ a[j + 1];
+                    a[j + 1] = a[j] ^ a[j + 1];
+                    a[j] = a[j] ^ a[j + 1];
                 }
             }
             if (!flag)
@@ -60,9 +60,9 @@ public class BubbleSort {
             for (j = i; j < a.length - 1 - i; j++) {
                 if (a[j] > a[j + 1]) {
                     flag = true;
-                    temp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = temp;
+                    a[j] = a[j] ^ a[j + 1];
+                    a[j + 1] = a[j] ^ a[j + 1];
+                    a[j] = a[j] ^ a[j + 1];
                 }
 
             }
@@ -73,9 +73,9 @@ public class BubbleSort {
             for (j = a.length - 2 - i; j >= i; j--) {//
                 if (a[j] > a[j + 1]) {
                     flag = true;
-                    temp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = temp;
+                    a[j] = a[j] ^ a[j + 1];
+                    a[j + 1] = a[j] ^ a[j + 1];
+                    a[j] = a[j] ^ a[j + 1];
                 }
             }
             preIndex++;
@@ -99,14 +99,14 @@ public class BubbleSort {
                 preIndex++;
             }
             if (preIndex < backIndex) {//如果大于索引的值在小于索引的值的左边则交换
-                temp = a[backIndex];
-                a[backIndex] = a[preIndex];
-                a[preIndex] = temp;
+                a[backIndex] = a[backIndex] ^ a[preIndex];
+                a[preIndex] = a[backIndex] ^ a[preIndex];
+                a[backIndex] = a[backIndex] ^ a[preIndex];
             }
         }
-        temp = a[index];//最后交换索引和backIndex(此时backIndex指向的值为从右至左第一个小于索引的值）的值
-        a[index] = a[backIndex];
-        a[backIndex] = temp;
+        a[backIndex] = a[index] ^ a[backIndex];//最后交换索引和backIndex(此时backIndex指向的值为从右至左第一个小于索引的值）的值
+        a[index] = a[index] ^ a[backIndex];
+        a[backIndex] = a[index] ^ a[backIndex];
         if (index != backIndex)//将序列不断分割直至序列长度为一
             quicksort(a, index, backIndex);
         if (preIndex + 1 != back)

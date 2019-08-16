@@ -8,7 +8,9 @@ import java.util.List;
  * 构造哈夫曼树
  */
 public class HuffMan {
-    public static Node createhuffMan(int[] a) {
+
+    public static Node createHuffMan(int[] a) {
+
         List<Node> list = new ArrayList<>();
         for (int i : a) {
             list.add(new Node(i));
@@ -29,7 +31,7 @@ public class HuffMan {
 
     public static void main(String[] args) {
         int a[] = {1, 2, 5, 7};
-        Node.preOrder(createhuffMan(a));
+        createHuffMan(a).preOrder();
     }
 }
 
@@ -54,12 +56,12 @@ class Node implements Comparable<Node> {
         return this.val - o.val;
     }
 
-    public static void preOrder(Node node) {//先序遍历二叉树
-        if (node.left == null && node.right == null)//只输出叶子结点
-            System.out.print(node.val + " ");
-        if (node.left != null)
-            preOrder(node.left);
-        if (node.right != null)
-            preOrder(node.right);
+    public void preOrder() {//先序遍历二叉树
+        if (this.left == null && this.right == null)//只输出叶子结点
+            System.out.print(this.val + " ");
+        if (this.left != null)
+            this.left.preOrder();
+        if (this.right != null)
+            this.right.preOrder();
     }
 }

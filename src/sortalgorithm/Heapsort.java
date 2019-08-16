@@ -1,5 +1,7 @@
 package sortalgorithm;
 
+import java.util.Arrays;
+
 /**
  * 堆排序（不稳定算法）
  * 使用完全二叉树作为数据结构实现排序（最大堆）
@@ -7,7 +9,10 @@ package sortalgorithm;
  */
 public class Heapsort {
     public static void main(String[] args) {
-
+        Heapsort heapsort = new Heapsort();
+        int[] a = {5, 6, 8, 3, 0, 1, 44, 6, 3};
+        heapsort.test(a);
+        System.out.println(Arrays.toString(a));
     }
 
     public void test(int[] b) {
@@ -31,13 +36,13 @@ public class Heapsort {
      * @param index  堆化的根节点
      */
     public static void disposal(int[] a, int length, int index) {//堆化
-        int temp = a[index], exchange;//记录堆顶
+        int temp = a[index];//记录堆顶
         for (int i = 2 * index + 1, j = index; i < length; i = 2 * i + 1) {//从左孩子出发，并且每一次都寻找左孩子
             if (i + 1 < length && a[i] < a[i + 1]) i++;//如果右孩子存在并且大于左孩子则进入右孩子
             if (a[i] > temp) {//如果当前孩子大于堆顶则互换
-                exchange = a[i];
-                a[i] = a[j];
-                a[j] = exchange;
+                a[i] = a[i] ^ a[j];
+                a[j] = a[i] ^ a[j];
+                a[i] = a[i] ^ a[j];
                 j = i;//将待换结点置为当前被更换的节点（从堆顶置换而来的值可能小于当前节点的孩子结点）所以需要继续判断
             } else break;
         }
