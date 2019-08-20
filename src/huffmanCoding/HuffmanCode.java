@@ -48,11 +48,6 @@ public class HuffmanCode {
                 System.out.println(e.getMessage());
             }
             try {
-                os.close();
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            }
-            try {
                 is.close();
             } catch (IOException e) {
                 System.out.println(e.getMessage());
@@ -81,11 +76,6 @@ public class HuffmanCode {
             }
             try {
                 ois.close();
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
-            }
-            try {
-                is.close();
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
