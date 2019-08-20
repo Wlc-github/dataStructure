@@ -1,9 +1,6 @@
 package huffmanCoding;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -47,9 +44,17 @@ public class HuffmanCode {
         } finally {
             try {
                 oos.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+            try {
                 os.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+            try {
                 is.close();
-            } catch (Exception e) {
+            } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -71,9 +76,17 @@ public class HuffmanCode {
         } finally {
             try {
                 os.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+            try {
                 ois.close();
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+            try {
                 is.close();
-            } catch (Exception e) {
+            } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
         }
