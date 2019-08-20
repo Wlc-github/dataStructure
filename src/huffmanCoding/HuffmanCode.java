@@ -42,15 +42,19 @@ public class HuffmanCode {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
-            try {
-                oos.close();
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
+            if (oos != null) {
+                try {
+                    oos.close();
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
             }
-            try {
-                is.close();
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
+            if (is != null) {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
     }
@@ -69,15 +73,19 @@ public class HuffmanCode {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         } finally {
-            try {
-                os.close();
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
+            if (os != null) {
+                try {
+                    os.close();
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
             }
-            try {
-                ois.close();
-            } catch (IOException e) {
-                System.out.println(e.getMessage());
+            if (ois != null) {
+                try {
+                    ois.close();
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
     }
