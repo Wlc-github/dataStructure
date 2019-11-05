@@ -86,15 +86,15 @@ public class BinarySortTree {
     }
 
     public static void main(String[] args) {
-//        int[] a = {1, 6, 3, 7, 4, 3, 3};
-//        BinarySortTree binarySortTree = new BinarySortTree(a);
-//        tNode root = binarySortTree.root;
-//        root.midOrder();
-//        binarySortTree.delete(1, root);
-//        System.out.println();
-//        binarySortTree.root.midOrder();
-//        System.out.println(binarySortTree.getByValue(4));
-        System.out.println(5 + ~10);
+        int[] a = {1, 6, 3, 7, 4, 3, 3};
+        BinarySortTree binarySortTree = new BinarySortTree(a);
+        tNode root = binarySortTree.root;
+        root.midOrder();
+        binarySortTree.delete(1, root);
+        System.out.println();
+        binarySortTree.root.midOrder();
+        System.out.println(binarySortTree.getByValue(4));
+
     }
 }
 
