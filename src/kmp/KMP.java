@@ -45,12 +45,8 @@ public class KMP {
                 i++;
                 j++;
             } else {
-//                if (j == 0) {
-//                    i++;
-//                } else {
                 i = i - next[j];
                 j = 0;
-                // }
             }
         }
         if (j == tlen)
