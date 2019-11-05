@@ -9,42 +9,40 @@ import java.util.Arrays;
  */
 public class Heapsort {
     public static void main(String[] args) {
-        Heapsort heapsort = new Heapsort();
         int[] a = {5, 6, 8, 3, 0, 1, 44, 6, 3};
-        heapsort.test(a);
+        sort(a);
         System.out.println(Arrays.toString(a));
     }
 
-    public void test(int[] b) {
-        if (b == null || b.length <= 1) return;
-        int temp, length = b.length;
-        for (int i = length / 2 - 1; i >= 0; i--) {//初始化堆
-            disposal(b, length, i);
+    public static void sort(int[] nums) {
+        int len = nums.length;
+        for (int j = len / 2; j >= 0; j--) {
+            heap(nums, j, len);
         }
-        for (int i = 1; i < b.length; i++) {//将堆顶数字与堆底交换（进行排序，堆顶为当前最大数）将堆减一重新堆化
-            temp = b[0];
-            b[0] = b[length - 1];
-            b[length - 1] = temp;
-            length--;
-            disposal(b, length, 0);
+        for (int i = 0, length = len; i < length; i++) {
+            heap(nums, 0, len--);
+            Swap.swap(nums, 0, len);
         }
     }
 
-    /**
-     * @param a      传入的数组
-     * @param length 当前堆的长度
-     * @param index  堆化的根节点
-     */
-    public static void disposal(int[] a, int length, int index) {//堆化
-        int temp = a[index];//记录堆顶
-        for (int i = 2 * index + 1, j = index; i < length; i = 2 * i + 1) {//从左孩子出发，并且每一次都寻找左孩子
-            if (i + 1 < length && a[i] < a[i + 1]) i++;//如果右孩子存在并且大于左孩子则进入右孩子
-            if (a[i] > temp) {//如果当前孩子大于堆顶则互换
-                a[i] = a[i] ^ a[j];
-                a[j] = a[i] ^ a[j];
-                a[i] = a[i] ^ a[j];
-                j = i;//将待换结点置为当前被更换的节点（从堆顶置换而来的值可能小于当前节点的孩子结点）所以需要继续判断
-            } else break;
+    public static void heap(int[] nums, int index, int length) {
+        int len = length;
+        int largest = index;
+        if ((index * 2 + 2) < len) {//左右子树都存在
+            if (nums[index * 2 + 1] < nums[index * 2 + 2]) {//右子树大
+                if (nums[index] < nums[index * 2 + 2])
+                    largest = index * 2 + 2;
+            } else {
+                if (nums[index] < nums[index * 2 + 1])
+                    largest = index * 2 + 1;
+            }
+        } else if ((index * 2 + 1) < len) {//只有左子树存在
+            if (nums[index] < nums[index * 2 + 1])
+                largest = index * 2 + 1;
+        } else return;
+        if (largest != index) {//如果最大值不是父节点则交换然后递归子节点
+            Swap.swap(nums, largest, index);
+            heap(nums, largest, len);
         }
     }
 }
