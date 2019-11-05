@@ -10,6 +10,8 @@ public class BucketSort {
         int[] a = {1, 3, 4, 5, 2, 6, 7, 7, 8, 9};
 //        CountSort(a);
         radixSort(a);
+        Object o;
+
         System.out.println(Arrays.toString(a));
     }
 
