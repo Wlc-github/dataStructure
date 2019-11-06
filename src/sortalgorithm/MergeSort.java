@@ -8,14 +8,21 @@ import java.util.Arrays;
  * 将序列不断分割直至分割为子序列长度为一，再将子序列进行拼接，在拼接的过程中进行排序，使得排序过程为两个有序序列拼接为一个有序序列
  */
 public class MergeSort {
+
+    public static void sort(int[] nums) {
+        if (nums == null)
+            return;
+        cutOff(nums, 0, nums.length - 1, new int[nums.length]);
+    }
+
     /**
      * @param a     传入数组
      * @param left  起点
      * @param right 终点
      * @param temp  临时数组
      */
-    public static void cutOff(int[] a, int left, int right, int[] temp) {
-        if (a == null || a.length <= 1) return;
+    private static void cutOff(int[] a, int left, int right, int[] temp) {
+        if (a.length <= 1) return;
         if (left < right) {
             int mid = (right + left) / 2;
             cutOff(a, left, mid, temp);
@@ -31,7 +38,7 @@ public class MergeSort {
      * @param right 拼接串的终点
      * @param temp  临时数组
      */
-    public static void merge(int[] a, int left, int mid, int right, int[] temp) {
+    private static void merge(int[] a, int left, int mid, int right, int[] temp) {
         int t = 0, rIndex = mid + 1, lIndex = left;
         while (lIndex <= mid && rIndex <= right) {
             if (a[lIndex] < a[rIndex]) {
@@ -67,7 +74,7 @@ public class MergeSort {
         for (int i = 0; i < 30; i++) {
             a[i] = (int) (Math.random() * 300);
         }
-        cutOff(a, 0, 29, new int[30]);
+        sort(a);
         System.out.println(Arrays.toString(a));
     }
 }
